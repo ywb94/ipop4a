@@ -1,0 +1,63 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitattributes
+* .gitignore
+* CHANGELOG.md
+* LICENSE
+* README
+* ant.properties
+* build.xml
+* connectbot.sublime-project
+* icons\
+* icons\icon14.png
+* icons\icon64.png
+* locale\
+* locale\.gitignore
+* tests\
+* tests\.classpath
+* tests\.gitignore
+* tests\.project
+* tests\.settings\
+* tests\.settings\org.eclipse.jdt.core.prefs
+* tests\.settings\org.eclipse.jdt.ui.prefs
+* tests\ant.properties
+* tests\build.xml
+* tests\proguard.cfg
+* tests\project.properties
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* jni\ => app\src\main\jni\
+* libs\armeabi\libcom_google_ase_Exec.so => app\src\main\jniLibs\armeabi\libcom_google_ase_Exec.so
+* libs\x86\libcom_google_ase_Exec.so => app\src\main\jniLibs\x86\libcom_google_ase_Exec.so
+* proguard.cfg => app\proguard.cfg
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+* tests\src\ => app\src\androidTest\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

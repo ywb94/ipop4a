@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * ConnectBot: simple, powerful, open-source SSH client for Android
+ * Copyright 2007 Kenny Root, Jeffrey Sharkey
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#ff000000">
+
+	<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentBottom="true"
+        android:background="#ddffffff"
+        android:id="@+id/SendLayout"
+		android:visibility="visible">
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/sendText"
+            android:background="@drawable/setbar_bg"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+			android:gravity="top"
+            android:layout_above="@+id/sendButton"
+			android:hint="@string/ywb_sendhint"
+			android:paddingLeft="5dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sendButton"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentTop="false"
+            android:src="@drawable/play"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pauseButton"
+            android:src="@drawable/pause"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/sendButton"
+            android:focusable="false" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/openButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="false"
+            android:layout_toRightOf="@+id/pauseButton"
+            android:src="@drawable/open" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveButton"
+            android:layout_alignBottom="@+id/openButton"
+            android:layout_toRightOf="@+id/openButton"
+            android:src="@drawable/save" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/setButton"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/saveButton"
+            android:src="@drawable/config" />
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/moreButton"
+			android:layout_below="@+id/sendText"
+			android:layout_toRightOf="@+id/setButton"
+			android:src="@drawable/button" />
+
+		<CheckBox
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/ywb_sendline"
+			android:id="@+id/sendLine"
+			android:layout_alignParentBottom="true"
+			android:textColor="#000000"
+			android:layout_alignParentRight="true"
+			android:button="@drawable/checkbox"
+			android:paddingLeft="20.0dp"
+			android:paddingRight="10.0dp" />
+	</RelativeLayout>
+
+	<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+		android:id="@+id/buttonLayout"
+		android:background="#ddffffff"
+		android:visibility="invisible">
+
+		<TableLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_above="@+id/returnButton"
+			android:background="@drawable/setbar_bg"
+			android:shrinkColumns = "0,1,2,3,4,5,6,7,8"
+			android:id="@+id/tbLayout">
+
+		</TableLayout>
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/returnButton"
+			android:layout_alignParentBottom="true"
+			android:layout_alignParentLeft="true"
+			android:src="@drawable/return1" />
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/addButton"
+			android:layout_alignParentLeft="false"
+			android:layout_toRightOf="@+id/returnButton"
+			android:layout_alignParentBottom="true"
+			android:src="@drawable/add" />
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/tabButton"
+			android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@+id/addButton"
+			android:src="@drawable/tab" />
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/upButton"
+			android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@+id/tabButton"
+			android:src="@drawable/up" />
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/downButton"
+			android:src="@drawable/down"
+			android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@+id/upButton" />
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/leftButton"
+			android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@+id/downButton"
+			android:src="@drawable/left" />
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/rightButton"
+			android:src="@drawable/right"
+			android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@+id/leftButton" />
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/enterButton"
+			android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@+id/rightButton"
+			android:src="@drawable/enter" />
+
+	</RelativeLayout>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/SendLayout">
+
+		<TextView
+            android:id="@android:id/empty"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/terminal_no_hosts_connected"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="center"
+            />
+
+		<ViewFlipper
+            android:id="@+id/console_flip"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            </RelativeLayout>
+        </ViewFlipper>
+
+		<RelativeLayout
+            android:id="@+id/console_password_group"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="5dip"
+            android:background="#80000000"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="25dip"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/console_password_instructions"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:visibility="gone"
+                android:layout_marginBottom="5dip"
+                />
+
+            <EditText
+                android:id="@+id/console_password"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:password="true"
+                android:singleLine="true"
+                android:layout_below="@+id/console_password_instructions"
+                android:layout_toLeftOf="@+id/button2" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ywb_passwd"
+                android:id="@+id/button2"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/console_password"
+                android:layout_below="@+id/console_password" />
+
+        </RelativeLayout>
+
+		<RelativeLayout
+            android:id="@+id/console_boolean_group"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="5dip"
+            android:background="#80000000"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="25dip"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/console_prompt"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+
+            <Button
+                android:id="@+id/console_prompt_no"
+                android:text="@string/button_no"
+                android:paddingTop="5dip"
+                android:paddingBottom="10dip"
+                android:paddingLeft="40dip"
+                android:paddingRight="40dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/console_prompt"
+                android:clickable="false"
+                />
+
+            <Button
+                android:id="@+id/console_prompt_yes"
+                android:text="@string/button_yes"
+                android:paddingTop="5dip"
+                android:paddingBottom="10dip"
+                android:paddingLeft="40dip"
+                android:paddingRight="40dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/console_prompt_no"
+                android:layout_below="@+id/console_prompt"
+                />
+
+        </RelativeLayout>
+
+		<RelativeLayout
+            android:id="@+id/keyboard_group"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="15dip"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/button_keyboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:src="@+drawable/button_keyboard"
+                android:contentDescription="@string/image_description_show_keyboard"
+                />
+
+            <ImageView
+                android:id="@+id/button_ctrl"
+                android:paddingRight="15dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:src="@+drawable/button_ctrl"
+                android:contentDescription="@string/image_description_toggle_control_character"
+                />
+
+            <ImageView
+                android:id="@+id/button_esc"
+                android:paddingRight="15dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/button_ctrl"
+                android:layout_alignParentBottom="true"
+                android:src="@+drawable/button_esc"
+                android:contentDescription="@string/image_description_send_escape_character"
+                />
+
+        </RelativeLayout>
+	</RelativeLayout>
+
+</RelativeLayout>

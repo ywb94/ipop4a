@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ConnectBot: simple, powerful, open-source SSH client for Android
+ Copyright 2007 Kenny Root, Jeffrey Sharkey
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="org.ywb_ipop"
+	android:versionName="1.0"
+	android:versionCode="10"
+	android:installLocation="auto">
+
+	<uses-sdk android:targetSdkVersion="15" android:minSdkVersion="4" />
+
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<uses-permission android:name="android.permission.BLUETOOTH" />
+
+	<uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+
+	<supports-screens />
+
+	<application
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:description="@string/app_desc"
+		android:allowBackup="true"
+		android:backupAgent="org.ywb_ipop.service.BackupAgent"
+		android:killAfterRestore="true"
+        >
+
+		<activity android:name="org.ywb_ipop.HostListActivity" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.CREATE_SHORTCUT" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.PICK" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:scheme="ssh" />
+				<data android:scheme="telnet" />
+				<data android:scheme="local" />
+				<data android:scheme="bluetooth" />
+			</intent-filter>
+		</activity>
+		<activity android:name="org.ywb_ipop.DiscoveryActivity" android:configChanges="keyboardHidden|orientation" />
+        <activity android:name="org.ywb_ipop.IPinfoActivity" android:configChanges="keyboardHidden|orientation" />
+        <activity android:name="org.ywb_ipop.SendSettingActivity" android:configChanges="keyboardHidden|orientation" />
+		<activity android:name="org.ywb_ipop.PubkeyListActivity" android:configChanges="keyboardHidden|orientation" />
+		<activity android:name="org.ywb_ipop.GeneratePubkeyActivity" android:configChanges="keyboardHidden|orientation" />
+		<activity android:name="org.ywb_ipop.HostEditorActivity" android:configChanges="keyboardHidden|orientation" />
+		<activity android:name="org.ywb_ipop.PortForwardListActivity" android:configChanges="keyboardHidden|orientation" />
+		<activity android:name="org.ywb_ipop.SettingsActivity" android:configChanges="keyboardHidden|orientation" />
+		<activity android:name="org.ywb_ipop.WizardActivity" android:configChanges="keyboardHidden|orientation" />
+		<activity android:name="org.ywb_ipop.HelpActivity" android:configChanges="keyboardHidden|orientation" />
+		<activity android:name="org.ywb_ipop.HelpTopicActivity" android:configChanges="keyboardHidden|orientation" />
+		<activity android:name="org.ywb_ipop.ColorsActivity" android:configChanges="keyboardHidden|orientation" />
+
+		<service android:name="org.ywb_ipop.service.TerminalManager"
+			android:configChanges="keyboardHidden|orientation"
+			android:description="@string/service_desc" />
+
+		<activity android:name="org.ywb_ipop.ConsoleActivity" android:configChanges="keyboardHidden|orientation"
+			android:theme="@style/NoTitle" android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
+			android:launchMode="singleTop" android:hardwareAccelerated="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="ssh" />
+				<data android:scheme="telnet" />
+				<data android:scheme="local" />
+				<data android:scheme="bluetooth" />
+				<!-- format:  ssh://user@host:port/#nickname  -->
+				<!-- format:  telnet://host:port/#nickname  -->
+				<!-- format:  local://  -->
+			</intent-filter>
+		</activity>
+
+		<meta-data android:name="com.google.android.backup.api_key"
+			android:value="AEdPqrEAAAAIDlFz9nSUr2g0gSytW0t2cNnYAGHDkptlVohsBA" />
+
+	</application>
+</manifest>

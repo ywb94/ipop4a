@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent">
+
+
+<LinearLayout android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="40dip">
+
+    <Button android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:id="@+id/FileChooserHomeBtn"
+        android:text="@string/ywb_filedlg_home"
+        android:layout_weight="1"/>
+
+    <LinearLayout android:layout_width="140dip"
+        android:layout_height="35dip"
+        android:id="@+id/FileChooserDirLayout"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <!--  <TextView android:layout_width="140dip"
+                        android:layout_height="35dip"
+                        android:id="@+id/dir_str"
+                        android:gravity="center"
+                        android:layout_weight="1"/> -->
+
+    </LinearLayout>
+
+    <Button android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:id="@+id/FileChooserBackBtn"
+        android:text="@string/ywb_filedlg_back"
+        android:layout_weight="1"/>
+
+</LinearLayout>
+
+<ListView android:layout_width="fill_parent"
+    android:layout_height="300dip"
+    android:id="@+id/FileChooserDirList"/>
+
+<Button android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/FileChooserOkBtn"
+    android:text="@string/ywb_filedlg_ok"/>
+
+<Button android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/FileChooserCancelBtn"
+    android:text="@string/ywb_filedlg_cancel"/>
+
+</LinearLayout>
