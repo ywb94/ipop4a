@@ -76,6 +76,8 @@
 
 	<!-- Window title for the Host List -->
 	<string name="title_hosts_list">"Hosts"</string>
+	<string name="title_ipinfo">"IP info"</string>
+	<string name="title_server">"Server"</string>
 	<!-- Window title for the Pubkeys List -->
 	<string name="title_pubkey_list">"Pubkeys"</string>
 	<!-- Window title for the Port Forwards List -->

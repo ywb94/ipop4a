@@ -1448,7 +1448,8 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 
 
         sendtext= menu.add(R.string.ywb_sendtext);
-        sendtext.setIcon(android.R.drawable.stat_notify_more);
+       // sendtext.setIcon(android.R.drawable.stat_notify_more);
+		sendtext.setIcon(R.drawable.sendtxt);
         if (android.os.Build.VERSION.SDK_INT >=  14)//Android 4.0以上才支持
         sendtext.setShowAsAction(1);//SHOW_AS_ACTION_IF_ROOM,SHOW_AS_ACTION_ALWAYS:2
         sendtext.setOnMenuItemClickListener(new OnMenuItemClickListener() {

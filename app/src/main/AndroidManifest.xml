@@ -63,6 +63,7 @@
 				<data android:scheme="bluetooth" />
 			</intent-filter>
 		</activity>
+		<activity android:name="org.ywb_ipop.ServerActivity" android:configChanges="keyboardHidden|orientation" />
 		<activity android:name="org.ywb_ipop.DiscoveryActivity" android:configChanges="keyboardHidden|orientation" />
         <activity android:name="org.ywb_ipop.IPinfoActivity" android:configChanges="keyboardHidden|orientation" />
         <activity android:name="org.ywb_ipop.SendSettingActivity" android:configChanges="keyboardHidden|orientation" />

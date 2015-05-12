@@ -24,6 +24,9 @@ public class IPinfoActivity extends Activity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.act_ipinfo);
+        this.setTitle(String.format("%s: %s",
+                getResources().getText(R.string.app_name),
+                getResources().getText(R.string.title_ipinfo)));
         EditText et = (EditText)findViewById(R.id.editText);
         EditText et2 = (EditText)findViewById(R.id.editText2);
         et.setText(getCurrentNetType(this));

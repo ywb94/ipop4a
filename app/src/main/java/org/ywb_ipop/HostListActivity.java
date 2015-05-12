@@ -117,7 +117,7 @@ public class HostListActivity extends ListActivity {
 
 	protected boolean sortedByColor = false;
 
-	private MenuItem sortcolor,ipinfo;
+	private MenuItem sortcolor,ipinfo,servermenu;
 
 	private MenuItem sortlast;
 
@@ -566,8 +566,15 @@ public class HostListActivity extends ListActivity {
 		// don't offer menus when creating shortcut
 		if(makingShortcut) return true;
 		CheckVersionTask();
+
+		servermenu=menu.add("Server");
+		servermenu.setIcon(R.drawable.server);
+		if (android.os.Build.VERSION.SDK_INT >=  14)//Android 4.0以上才支持
+			servermenu.setShowAsAction(1);//SHOW_AS_ACTION_IF_ROOM,SHOW_AS_ACTION_ALWAYS:2
+		servermenu.setIntent(new Intent(HostListActivity.this,ServerActivity.class));
+
         ipinfo= menu.add("IP");
-        ipinfo.setIcon(android.R.drawable.stat_notify_more);
+        ipinfo.setIcon(R.drawable.ipinfo);
         if (android.os.Build.VERSION.SDK_INT >=  14)//Android 4.0以上才支持
             ipinfo.setShowAsAction(1);//SHOW_AS_ACTION_IF_ROOM,SHOW_AS_ACTION_ALWAYS:2
         ipinfo.setIntent(new Intent(HostListActivity.this, IPinfoActivity.class));

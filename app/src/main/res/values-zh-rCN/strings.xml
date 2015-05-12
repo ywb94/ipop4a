@@ -52,6 +52,8 @@
   <string name="ywb_updating">正在下载更新</string>
   <string name="service_desc">维护SSH连接及已装载的公钥</string>
   <string name="title_hosts_list">主机</string>
+  <string name="title_ipinfo">IP信息</string>
+  <string name="title_server">服务</string>
   <string name="title_pubkey_list">公钥</string>
   <string name="title_port_forwards_list">端口转发</string>
   <string name="title_host_editor">编辑主机</string>
