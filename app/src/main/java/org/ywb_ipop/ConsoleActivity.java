@@ -375,7 +375,10 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 						View flip = findCurrentView(R.id.console_flip);
 						if(flip != null) {
 							TerminalView terminal = (TerminalView) flip;
+							if(mycode<30)
 							((vt320) terminal.bridge.buffer).keyPressed(mycode, ' ', 0);
+							else
+								((vt320)terminal.bridge.buffer).keyTyped(mycode, ' ', 8);
 						}
 					//}
 					//else

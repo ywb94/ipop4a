@@ -2,4 +2,185 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <TabHost
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tabHost">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"></TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ywb_tcp_ser_port"
+                        android:id="@+id/tcp_ser_port_label"
+                        android:layout_marginTop="10dp" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:ems="7"
+                        android:id="@+id/tcp_ser_port"
+                        android:layout_toRightOf="@+id/tcp_ser_port_label"
+                        android:text="1122" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ywb_tcp_start"
+                        android:id="@+id/tcp_ser_start"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_toRightOf="@+id/tcp_ser_port" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ywb_tcp_dis"
+                        android:id="@+id/tcp_ser_dis"
+                        android:layout_alignParentRight="false"
+                        android:layout_toRightOf="@+id/tcp_ser_start" />
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/tcp_ser_info"
+                        android:background="@drawable/setbar_bg"
+                        android:layout_below="@+id/tcp_ser_Send_txt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ywb_tcp_list"
+                        android:id="@+id/tcp_ser_list_label"
+                        android:layout_below="@+id/tcp_ser_info"
+                        android:layout_alignParentLeft="true" />
+
+                    <ListView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/listView"
+                        android:layout_below="@+id/tcp_ser_list_label"
+                        android:minHeight="200dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ywb_cli_ip"
+                        android:id="@+id/tcp_cli_ip_label"
+                        android:layout_below="@+id/listView"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="10dp" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tcp_cli_ip"
+                        android:layout_below="@+id/listView"
+                        android:layout_toRightOf="@+id/tcp_cli_ip_label"
+                        android:text="127.0.0.1"
+                        android:ems="6"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ywb_cli_port"
+                        android:id="@+id/tcp_cli_port_label"
+                        android:layout_below="@+id/listView"
+                        android:layout_toRightOf="@+id/tcp_cli_ip"
+                        android:layout_marginTop="10dp" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tcp_cli_port"
+                        android:layout_toRightOf="@+id/tcp_cli_port_label"
+                        android:layout_below="@+id/listView"
+                        android:text="1122"
+                        android:ems="4"
+                        />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ywb_cli_connect"
+                        android:id="@+id/tcp_cli_conn"
+                        android:layout_below="@+id/tcp_cli_ip"
+                        android:layout_alignParentLeft="true" />
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="100dp"
+                        android:id="@+id/tcp_cli_info"
+                        android:background="@drawable/setbar_bg"
+                        android:layout_below="@+id/tcp_cli_conn" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ywb_tcp_send"
+                        android:id="@+id/tcp_cli_Send"
+                        android:layout_alignTop="@+id/tcp_cli_conn"
+                        android:layout_toRightOf="@+id/tcp_ser_list_label" />
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tcp_cli_Send_txt"
+                        android:layout_above="@+id/tcp_cli_info"
+                        android:layout_toRightOf="@+id/tcp_cli_Send"
+                        android:text="test" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tcp_ser_Send_txt"
+                        android:layout_below="@+id/tcp_ser_port"
+                        android:text="server" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ywb_tcp_send"
+                        android:id="@+id/tcp_ser_Send"
+                        android:layout_alignBottom="@+id/tcp_ser_Send_txt"
+                        android:layout_alignRight="@+id/tcp_ser_port"
+                        android:layout_alignParentRight="true" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"></LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"></LinearLayout>
+            </FrameLayout>
+        </RelativeLayout>
+    </TabHost>
 </RelativeLayout>

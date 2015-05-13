@@ -65,7 +65,16 @@
 	<string name="ywb_buttontype2">"Hex"</string>
 	<string name="ywb_buttontype3">"Key"</string>
 	<string name="ywb_buttontype3title">"Select Key:"</string>
-
+	<string name="ywb_tcp_ser_port">"Listen port:"</string>
+	<string name="ywb_tcp_start">"Start"</string>
+	<string name="ywb_tcp_stop">"Stop"</string>
+	<string name="ywb_tcp_dis">"Clear"</string>
+	<string name="ywb_tcp_list">"Connected list:"</string>
+	<string name="ywb_cli_ip">"Server IP:"</string>
+	<string name="ywb_cli_port">"Server Port:"</string>
+	<string name="ywb_cli_connect">"Connect"</string>
+	<string name="ywb_cli_disconnect">"Disconnect"</string>
+	<string name="ywb_tcp_send">"Send"</string>
 	<string name="ywb_buttontype2title">"Send content(example:3a 4b 0d):"</string>
 	<string name="ywb_sendline">"Send line"</string>
 	<string name="ywb_noaddbutton">"sorry,you can't add new button"</string>

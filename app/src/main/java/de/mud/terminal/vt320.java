@@ -46,7 +46,7 @@ public abstract class vt320 extends VDUBuffer implements VDUInput {
   public final static String ID = "$Id: vt320.java 507 2005-10-25 10:14:52Z marcus $";
 
   /** the debug level */
-  private final static int debug = 0;
+  private final static int debug =0;
   private StringBuilder debugStr;
   public abstract void debug(String notice);
 
