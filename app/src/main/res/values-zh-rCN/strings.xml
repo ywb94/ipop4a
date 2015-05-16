@@ -50,6 +50,17 @@
   <string name="ywb_noaddbutton">不能新增自定义按钮，已经达到最大个数</string>
   <string name="ywb_updatetitle">版本升级</string>
   <string name="ywb_updating">正在下载更新</string>
+  <string name="ywb_tcp_ser_port">监听端口：</string>
+  <string name="ywb_tcp_start">开始</string>
+  <string name="ywb_tcp_stop">停止</string>
+  <string name="ywb_tcp_dis">清除</string>
+  <string name="ywb_tcp_list">连接列表：</string>
+  <string name="ywb_cli_ip">服务器IP：</string>
+  <string name="ywb_cli_port">服务器端口：</string>
+  <string name="ywb_cli_connect">连接</string>
+  <string name="ywb_cli_disconnect">断开</string>
+  <string name="ywb_tcp_send">发送</string>
+  <string name="ywb_udp_echo">回送</string>
   <string name="service_desc">维护SSH连接及已装载的公钥</string>
   <string name="title_hosts_list">主机</string>
   <string name="title_ipinfo">IP信息</string>

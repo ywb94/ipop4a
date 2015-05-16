@@ -65,6 +65,12 @@
 	<string name="ywb_buttontype2">"Hex"</string>
 	<string name="ywb_buttontype3">"Key"</string>
 	<string name="ywb_buttontype3title">"Select Key:"</string>
+	<string name="ywb_buttontype2title">"Send content(example:3a 4b 0d):"</string>
+	<string name="ywb_sendline">"Send line"</string>
+	<string name="ywb_noaddbutton">"sorry,you can't add new button"</string>
+	<string name="ywb_updatetitle">"Update"</string>
+	<string name="ywb_updating">"Updating"</string>
+
 	<string name="ywb_tcp_ser_port">"Listen port:"</string>
 	<string name="ywb_tcp_start">"Start"</string>
 	<string name="ywb_tcp_stop">"Stop"</string>
@@ -75,11 +81,7 @@
 	<string name="ywb_cli_connect">"Connect"</string>
 	<string name="ywb_cli_disconnect">"Disconnect"</string>
 	<string name="ywb_tcp_send">"Send"</string>
-	<string name="ywb_buttontype2title">"Send content(example:3a 4b 0d):"</string>
-	<string name="ywb_sendline">"Send line"</string>
-	<string name="ywb_noaddbutton">"sorry,you can't add new button"</string>
-	<string name="ywb_updatetitle">"Update"</string>
-	<string name="ywb_updating">"Updating"</string>
+	<string name="ywb_udp_echo">"Echo"</string>
 	<!-- Summary of what the ConnectBot service does; displayed in the Android running apps list -->
 	<string name="service_desc">"Maintains SSH connections and loaded pubkeys"</string>
 
