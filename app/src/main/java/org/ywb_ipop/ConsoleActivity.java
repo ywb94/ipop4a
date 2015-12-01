@@ -71,6 +71,7 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.text.ClipboardManager;
 import android.text.Html;
+import android.text.Layout;
 import android.util.Log;
 import android.util.TypedValue;
 import android.util.Xml;
@@ -503,7 +504,7 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
     private void setSendWin(){
             SharedPreferences prefs =PreferenceManager.getDefaultSharedPreferences(this);
             //设置发送框高度
-            String temps= prefs.getString("send_height","200");
+            String temps= prefs.getString("send_height","300");
             int height= Integer.parseInt(temps);
             RelativeLayout sendLayout = (RelativeLayout) findViewById(R.id.SendLayout);
             sendLayout.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, height));
@@ -517,7 +518,7 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
             temps= prefs.getString("send_period","1000");
             period=Integer.parseInt(temps);
             //设置字体大小
-            temps= prefs.getString("send_fontsize","20");
+            temps= prefs.getString("send_fontsize","25");
             TextView sendtext = (TextView)this.findViewById(R.id.sendText);
             sendtext.setTextSize(TypedValue.COMPLEX_UNIT_PX,Integer.parseInt(temps));
             //设置发送类型
@@ -750,6 +751,61 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 		} catch (ClassNotFoundException e) {
 		}
 	}
+	public boolean moveUpDown(EditText myTextbox,int UpDown) {
+		int start = myTextbox.getSelectionStart();
+		int end = myTextbox.getSelectionEnd();
+		Layout layout = myTextbox.getLayout();
+		if (start != end) {
+			int min = Math.min(start, end);
+			int max = Math.max(start, end);
+            if(UpDown==0)
+				myTextbox.setSelection(min);
+			else
+				myTextbox.setSelection(max);
+
+			if (min == 0 && max == myTextbox.length()) {
+				return false;
+			}
+
+			return true;
+		} else {
+			int line = layout.getLineForOffset(end);
+            if(UpDown==0)
+			{
+				if (line > 0) {
+					  int move;
+					 if (layout.getParagraphDirection(line) ==
+					layout.getParagraphDirection(line - 1)) {
+					float h = layout.getPrimaryHorizontal(end);
+					 move = layout.getOffsetForHorizontal(line - 1, h);
+					} else {
+					 move = layout.getLineStart(line - 1);
+					}
+					myTextbox.setSelection(move);
+                    return true;
+                   }
+			}
+			else
+			{
+				if (line < layout.getLineCount() - 1) {
+					int move;
+
+					if (layout.getParagraphDirection(line) ==
+							layout.getParagraphDirection(line + 1)) {
+						float h = layout.getPrimaryHorizontal(end);
+						move = layout.getOffsetForHorizontal(line + 1, h);
+					} else {
+						move = layout.getLineStart(line + 1);
+					}
+
+					myTextbox.setSelection(move);
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
@@ -901,7 +957,7 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 
 				SharedPreferences prefs =PreferenceManager.getDefaultSharedPreferences(ConsoleActivity.this);
 				//设置发送框高度
-				String temps= prefs.getString("send_height", "200");
+				String temps= prefs.getString("send_height", "300");
 				int height= Integer.parseInt(temps);
 
 				buttonLayout.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, height));
@@ -914,6 +970,26 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 				buttonLayout.setVisibility(View.VISIBLE);
 			}
 	    });
+
+		ImageButton uptxt = (ImageButton) findViewById(R.id.uptxt);
+		uptxt.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				EditText editText=(EditText) findViewById(R.id.sendText);
+				editText.requestFocus();
+
+				moveUpDown(editText, 0);
+			}
+		});
+		ImageButton downtxt = (ImageButton) findViewById(R.id.downtxt);
+		downtxt.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				EditText editText=(EditText) findViewById(R.id.sendText);
+				editText.requestFocus();
+
+				moveUpDown(editText,  1);
+			}
+		});
+
 		ImageButton returnButton = (ImageButton) findViewById(R.id.returnButton);
 		returnButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

@@ -45,7 +45,16 @@
 			android:gravity="top"
             android:layout_above="@+id/sendButton"
 			android:hint="@string/ywb_sendhint"
-			android:paddingLeft="5dp" />
+			android:paddingLeft="5dp"
+            android:layout_toLeftOf="@+id/uptxt" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/downtxt"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/sendText"
+            android:src="@drawable/down" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -111,8 +120,19 @@
 			android:layout_alignParentRight="true"
 			android:button="@drawable/checkbox"
 			android:paddingLeft="20.0dp"
-			android:paddingRight="10.0dp" />
-	</RelativeLayout>
+			android:paddingRight="10.0dp"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentLeft="false"
+            android:layout_below="@+id/sendText" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/uptxt"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/up" />
+    </RelativeLayout>
 
 	<RelativeLayout
         android:layout_width="match_parent"
@@ -131,7 +151,40 @@
 			android:shrinkColumns = "0,1,2,3,4,5,6,7,8"
 			android:id="@+id/tbLayout">
 
-		</TableLayout>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </TableRow>
+        </TableLayout>
 
 		<ImageButton
 			android:layout_width="wrap_content"

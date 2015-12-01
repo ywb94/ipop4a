@@ -45,7 +45,7 @@
 		android:killAfterRestore="true"
         >
 
-		<activity android:name="org.ywb_ipop.HostListActivity" >
+		<activity android:name="org.ywb_ipop.HostListActivity"  >
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
