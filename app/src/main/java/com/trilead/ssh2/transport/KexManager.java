@@ -617,7 +617,7 @@ public class KexManager
 				boolean res = verifySignature(dhgexrpl.getSignature(), kxs.hostkey);
 
 				if (res == false)
-					throw new IOException("Hostkey signature sent by remote is wrong!");
+					throw new IOException("Hostkey signature sent by remote is wrong1!");
 
 				kxs.K = kxs.dhgx.getK();
 
@@ -671,11 +671,14 @@ public class KexManager
 				{
 					throw (IOException) new IOException("KEX error.").initCause(e);
 				}
-
+				//String temps="Hostkey wrong!key:"+kxs.hostkey.toString()+"|sig:"+dhr.getSignature().toString();
 				boolean res = verifySignature(dhr.getSignature(), kxs.hostkey);
 
-				if (res == false)
-					throw new IOException("Hostkey signature sent by remote is wrong!");
+				if (res == false) {
+
+					throw new IOException("Hostkey signature sent by remote is wrong2!");
+					//throw new IOException(temps);
+				}
 
 				kxs.K = kxs.dhx.getK();
 

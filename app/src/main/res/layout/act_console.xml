@@ -271,6 +271,7 @@
             android:id="@+id/console_flip"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:nextFocusUp="@+id/bottomBtn"
             >
 
             <RelativeLayout

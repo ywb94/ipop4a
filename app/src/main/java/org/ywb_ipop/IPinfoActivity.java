@@ -21,7 +21,7 @@ import java.util.Enumeration;
  * Created by Administrator on 2015/4/30.
  */
 public class IPinfoActivity extends Activity {
-    static String mtype = "WIFI";
+    public static int mtype = 0;
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.act_ipinfo);
@@ -40,26 +40,26 @@ public class IPinfoActivity extends Activity {
      * @param context
      * @return
      */
-    public static String getCurrentNetType(Context context) {
+    public static String  getCurrentNetType(Context context) {
         String type = "";
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = cm.getActiveNetworkInfo();
         if (info == null) {
             type = "NULL";
-            mtype = "NULL";
+            mtype = -1;
             return type;
         }
         if (info.getType() == ConnectivityManager.TYPE_WIFI) {
             type = "Type:WIFI" ;
-            mtype = "WIFI" ;
+            mtype = 0 ;
         }
-        if (info.getType() == ConnectivityManager.TYPE_ETHERNET) {
+        else if (info.getType() == ConnectivityManager.TYPE_ETHERNET) {
             type = "Type:ETHERNET" ;
-            mtype = "ETHERNET" ;
+            mtype = 1 ;
         }
         else{
             type ="Type:"+info.getTypeName()+"["+info.getSubtypeName()+"]\r\n";
-            mtype = "OTHER" ;
+            mtype = 2 ;
             type =type+"State:"+info.getState().toString()+"\r\n";
             type =type+"Reason:"+info.getReason()+"\r\n";
             type =type+"Roaming:"+String.valueOf(info.isRoaming());
@@ -74,7 +74,7 @@ public class IPinfoActivity extends Activity {
         //获取wifi服务
         WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         //判断wifi是否开启
-        if (wifiManager.isWifiEnabled()&&mtype=="WIFI") {
+        if (wifiManager.isWifiEnabled()&&mtype==0) {
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             int ipAddress = wifiInfo.getIpAddress();
             String ip = "IP:" + intToIp(ipAddress) + "\r\n";

@@ -16,6 +16,8 @@
 
 package com.google.ase;
 
+import android.util.Log;
+
 import java.io.FileDescriptor;
 
 /**
@@ -64,6 +66,7 @@ public class Exec {
   public static native int waitFor(int processId);
 
   static {
-    System.loadLibrary("com_google_ase_Exec");
+      System.loadLibrary("com_google_ase_Exec");
   }
 }
+

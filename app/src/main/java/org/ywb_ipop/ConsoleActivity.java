@@ -1138,9 +1138,12 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 
 		// handle requested console from incoming intent
 		requested = getIntent().getData();
-        mytitle=String.format("%s: %s",
+
+		mytitle=String.format("%s: %s",
                 getResources().getText(R.string.app_name),
                 (requested != null) ? requested.getFragment() : null);
+
+
         this.setTitle(mytitle);
 		inflater = LayoutInflater.from(this);
 
@@ -1919,8 +1922,9 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 				// show overlay on new slide and start fade
 				overlay = findCurrentView(R.id.terminal_overlay);
                //刷新窗口标题
-                TextView overlay1 = (TextView)overlay.findViewById(R.id.terminal_overlay);
-                String temps="IPOP:"+overlay1.getText().toString();
+               TextView overlay1 = (TextView)overlay.findViewById(R.id.terminal_overlay);
+				String temps="IPOP:"+overlay1.getText().toString();
+
                 this.setTitle(temps);
                 //刷新文本发送按钮
                 refreshSendButton();
@@ -2109,6 +2113,14 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 				flip.setDisplayedChild(requestedIndex);
 				flip.getCurrentView().findViewById(R.id.terminal_overlay)
 						.startAnimation(fade_out_delayed);
+				String temps=this.getTitle().toString();
+				if(temps.equals("IPOP: null")) {
+					TextView overlay = (TextView) findViewById(R.id.terminal_overlay);
+					String mtitle = "IPOP:null";
+					if (overlay != null)
+						mtitle ="IPOP:"+overlay.getText().toString();
+					this.setTitle(mtitle);
+				}
 			} catch (NullPointerException npe) {
 				Log.d(TAG, "View went away when we were about to display it", npe);
 			}

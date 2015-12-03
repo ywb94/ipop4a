@@ -49,7 +49,7 @@
 
 	<ListPreference
 		android:key="pubkeyid"
-		android:title="@string/ywb_settype"
+		android:title="@string/hostpref_pubkeyid_title"
 		android:entries="@array/list_pubkeyids"
 		android:entryValues="@array/list_pubkeyids_value"
 		/>

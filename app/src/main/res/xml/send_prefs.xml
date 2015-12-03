@@ -12,7 +12,7 @@
         android:title="@string/ywb_setheight"
         android:inputType="number"
         android:singleLine="true"
-        android:defaultValue="200"
+        android:defaultValue="300"
         />
 
     <ListPreference
@@ -34,7 +34,7 @@
         android:title="@string/ywb_setfontsize"
         android:inputType="number"
         android:singleLine="true"
-        android:defaultValue="20"
+        android:defaultValue="25"
         />
     <ListPreference
         android:key="send_loop"

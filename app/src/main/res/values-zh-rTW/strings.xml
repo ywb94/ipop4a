@@ -106,7 +106,7 @@
   <string name="pref_bell_title">響鈴</string>
   <string name="pref_bell_volume_title">鈴聲音量</string>
   <string name="pref_bell_vibrate_title">振動同時響鈴</string>
-  <string name="pref_bell_notification_title">背景通知</string>
+  <string name="pref_bell_notification_title">後臺通知</string>
   <string name="pref_bell_notification_summary">當背景終端響鈴時發出通知。</string>
   <string name="list_keymode_right">使用右側按鍵</string>
   <string name="list_keymode_left">使用左側按鍵</string>
