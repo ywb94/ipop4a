@@ -65,7 +65,11 @@ public class HelpTopicView extends WebView {
                 topic="VirtualKeyboard";
 
         }
-		String path = String.format("file:///android_asset/%s/%s%s",
+		String path;
+		if(topic.equals("在线帮助")||topic.equals("Online Help"))
+			 path ="http://iytc.net/soft/ipop.html" ;
+		else
+		 path = String.format("file:///android_asset/%s/%s%s",
                 temps, topic, HelpActivity.SUFFIX);
 				//HelpActivity.HELPDIR, topic, HelpActivity.SUFFIX);
 		loadUrl(path);

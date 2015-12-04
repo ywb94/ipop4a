@@ -71,7 +71,7 @@
   <string name="title_port_forwards_list">端口转发</string>
   <string name="title_host_editor">编辑主机</string>
   <string name="title_help">帮助</string>
-  <string name="title_colors">颜色</string>
+  <string name="title_colors">终端颜色</string>
   <string name="title_color_picker">选择一种颜色</string>
   <string name="ywb_connect">连接</string>
     <string name="ywb_passwd">确定</string>
@@ -224,7 +224,7 @@
   <string name="list_menu_pubkeys">管理公钥</string>
   <string name="list_menu_sortcolor">按颜色排序</string>
   <string name="list_menu_sortname">按名称排序</string>
-  <string name="list_menu_settings">设置</string>
+  <string name="list_menu_settings">系统设置</string>
   <string name="list_host_disconnect">断开连接</string>
   <string name="list_host_edit">编辑主机</string>
   <string name="list_host_portforwards">编辑端口转发</string>

@@ -87,6 +87,22 @@ public class HelpActivity extends Activity {
 					content.addView(button);
 				}
 			}
+			Button button = new Button(this);
+			if(HELPDIR.equals("help_cn"))
+				temps="在线帮助";
+			else
+				temps="Online Help";
+			final String topic =temps;
+			button.setText(topic);
+			button.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					Intent intent = new Intent(HelpActivity.this, HelpTopicActivity.class);
+					intent.putExtra(Intent.EXTRA_TITLE, topic);
+					HelpActivity.this.startActivity(intent);
+				}
+			});
+
+			content.addView(button);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			Log.e(TAG, "couldn't get list of help assets", e);

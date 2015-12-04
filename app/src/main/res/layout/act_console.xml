@@ -31,7 +31,7 @@
         android:layout_alignParentBottom="true"
         android:background="#ddffffff"
         android:id="@+id/SendLayout"
-		android:visibility="visible">
+		android:visibility="invisible">
 
         <EditText
             android:layout_width="fill_parent"
@@ -141,15 +141,25 @@
         android:layout_alignParentLeft="true"
 		android:id="@+id/buttonLayout"
 		android:background="#ddffffff"
-		android:visibility="invisible">
+		android:visibility="visible">
 
-		<TableLayout
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:id="@+id/scrollView"
+            android:layout_above="@+id/returnButton">
+
+
+
+        <TableLayout
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_above="@+id/returnButton"
+			android:layout_height="wrap_content"
+
 			android:background="@drawable/setbar_bg"
 			android:shrinkColumns = "0,1,2,3,4,5,6,7,8"
-			android:id="@+id/tbLayout">
+			android:id="@+id/tbLayout"
+            android:padding="2dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -185,6 +195,9 @@
 
             </TableRow>
         </TableLayout>
+
+
+        </ScrollView>
 
 		<ImageButton
 			android:layout_width="wrap_content"
@@ -253,7 +266,7 @@
 
 	</RelativeLayout>
 
-	<RelativeLayout
+    <RelativeLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_above="@+id/SendLayout">
