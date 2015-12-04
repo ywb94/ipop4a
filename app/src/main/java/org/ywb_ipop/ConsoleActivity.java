@@ -44,6 +44,7 @@ import org.ywb_ipop.util.MyDialogListener;
 import org.ywb_ipop.util.PreferenceConstants;
 import org.ywb_ipop.util.UpdataInfo;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -166,6 +167,7 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 	private InputMethodManager inputManager;
 
 	private MenuItem disconnect, copy, paste, portForward, resize, urlscan,sendtext;
+	private boolean pgscreen=false;
 
 	protected TerminalBridge copySource = null;
 	private int lastTouchRow, lastTouchCol;
@@ -690,6 +692,7 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 			// If we just closed the last bridge, go back to the previous activity.
 			if (flip.getChildCount() == 0) {
 				finish();
+
 			}
 		}
 	}
@@ -1127,6 +1130,8 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 				sendKeyCode(KeyEvent.KEYCODE_ENTER);
 			}
 		});
+
+		pgscreen= prefs.getBoolean(PreferenceConstants.PGSCREEN, false);
 		// hide status bar if requested by user
 		if (prefs.getBoolean(PreferenceConstants.FULLSCREEN, false)) {
 			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -1272,6 +1277,11 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 
 		actionBar = ActionBarWrapper.getActionBar(this);
 		actionBar.setDisplayHomeAsUpEnabled(true);
+		if (android.os.Build.VERSION.SDK_INT >=  11) {
+			ActionBar actionBar1 = this.getActionBar();
+			if(actionBar1!=null)
+			actionBar1.setDisplayShowHomeEnabled(false);
+		}
 		if (titleBarHide) {
 			actionBar.hide();
 		}
@@ -1330,21 +1340,24 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 				if (e2.getAction() == MotionEvent.ACTION_UP) {
 					totalY = 0;
 				}
-
+				View flip = findCurrentView(R.id.console_flip);
+				if(flip == null) return false;
+				TerminalView terminal = (TerminalView)flip;
+				int touchSlop =	ViewConfiguration.get(terminal.getContext()).getScaledTouchSlop();
 				// activate consider if within x tolerance
-				if (Math.abs(e1.getX() - e2.getX()) < ViewConfiguration.getTouchSlop() * 4) {
-
-					View flip = findCurrentView(R.id.console_flip);
-					if(flip == null) return false;
-					TerminalView terminal = (TerminalView)flip;
-
+				//if (Math.abs(e1.getX() - e2.getX()) < ViewConfiguration.getTouchSlop() * 4) {
+				if (Math.abs(e1.getX() - e2.getX()) < touchSlop * 4) {
+					//View flip = findCurrentView(R.id.console_flip);
+					//if(flip == null) return false;
+					//TerminalView terminal = (TerminalView)flip;
 					// estimate how many rows we have scrolled through
 					// accumulate distance that doesn't trigger immediate scroll
 					totalY += distanceY;
 					final int moved = (int)(totalY / terminal.bridge.charHeight);
 
+
 					// consume as scrollback only if towards right half of screen
-					if (e2.getX() > flip.getWidth() / 2) {
+					if (pgscreen==false||e2.getX() > flip.getWidth() / 2) {
 						if (moved != 0) {
 							int base = terminal.bridge.buffer.getWindowBase();
 							terminal.bridge.buffer.setWindowBase(base + moved);
@@ -1738,8 +1751,8 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
     @Override
     public boolean onMenuOpened(int featureId, Menu menu)
     {
-        //if(featureId ==Window.FEATURE_ACTION_BAR && menu !=null){
-        if(featureId == Window.FEATURE_OPTIONS_PANEL && menu != null){
+        if(featureId ==Window.FEATURE_ACTION_BAR && menu !=null){
+       // if(featureId == Window.FEATURE_OPTIONS_PANEL && menu != null){
             if(menu.getClass().getSimpleName().equals("MenuBuilder")){
                 try{
                     Method m = menu.getClass().getDeclaredMethod(
@@ -1760,7 +1773,7 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case android.R.id.home:
+			case android.R.id.home://actionbar 返回事件
 				Intent intent = new Intent(this, HostListActivity.class);
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);

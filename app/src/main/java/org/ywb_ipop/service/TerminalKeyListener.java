@@ -400,6 +400,7 @@ public class TerminalKeyListener implements OnKeyListener, OnSharedPreferenceCha
 							getStateForBuffer());
 					bridge.tryKeyVibrate();
 				}
+				//v.clearFocus();
 				return true;
 
 			case KeyEvent.KEYCODE_DPAD_DOWN:
@@ -411,6 +412,7 @@ public class TerminalKeyListener implements OnKeyListener, OnSharedPreferenceCha
 							getStateForBuffer());
 					bridge.tryKeyVibrate();
 				}
+
 				return true;
 
 			case KeyEvent.KEYCODE_DPAD_RIGHT:
@@ -422,7 +424,7 @@ public class TerminalKeyListener implements OnKeyListener, OnSharedPreferenceCha
 							getStateForBuffer());
 					bridge.tryKeyVibrate();
 				}
-				v.clearFocus();
+
 				return true;
 
 			case KEYCODE_INSERT:

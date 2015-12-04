@@ -22,8 +22,15 @@
 		<item name="android:windowContentOverlay">@null</item>
 		<item name="android:actionBarStyle">@style/SolidActionBar</item>
 	</style>
-
 	<style name="SolidActionBar" parent="android:Widget.Holo.ActionBar">
-		<item name="android:background">#222222</item>
+		<item name="android:background">#1e88e5</item>
 	</style>
+	<style name="MyTitle" parent="android:Theme.DeviceDefault">
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:actionBarStyle">@style/SolidActionBar1</item>
+	</style>
+	<style name="SolidActionBar1" parent="android:Widget.Holo.Light.ActionBar">
+		<item name="android:background">#1e88e5</item>
+	</style>
+
 </resources>

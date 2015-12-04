@@ -22,4 +22,8 @@
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowContentOverlay">@null</item>
 	</style>
+	<style name="MyTitle" parent="android:Theme">
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowContentOverlay">@null</item>
+	</style>
 </resources>

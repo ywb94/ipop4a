@@ -82,6 +82,8 @@
 	<string name="ywb_cli_disconnect">"Disconnect"</string>
 	<string name="ywb_tcp_send">"Send"</string>
 	<string name="ywb_udp_echo">"Echo"</string>
+	<string name="ywb_pref_pgscreen">"Page up/down gesture"</string>
+	<string name="ywb_pref_pgscreen_summary">"Swip the left of the screen to send page up/dn to terminal"</string>
 	<!-- Summary of what the ConnectBot service does; displayed in the Android running apps list -->
 	<string name="service_desc">"Maintains SSH connections and loaded pubkeys"</string>
 

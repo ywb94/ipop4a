@@ -25,6 +25,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -40,6 +41,7 @@ import org.ywb_ipop.util.HostDatabase;
 import org.ywb_ipop.util.PreferenceConstants;
 import org.ywb_ipop.util.UpdataInfo;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -75,6 +77,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View.OnKeyListener;
@@ -360,7 +363,13 @@ public class HostListActivity extends ListActivity {
 	@Override
 	public void onStart() {
 		super.onStart();
-
+		//始终显示actionbar overflow
+		setOverflowShowingAlways();
+		/*if (android.os.Build.VERSION.SDK_INT >=  11) {
+			ActionBar actionBar1 = this.getActionBar();
+			if(actionBar1!=null)
+			actionBar1.setDisplayShowHomeEnabled(true);
+		}*/
 		// start the terminal manager service
 		this.bindService(new Intent(this, TerminalManager.class), connection, Context.BIND_AUTO_CREATE);
 
@@ -382,6 +391,8 @@ public class HostListActivity extends ListActivity {
 	@Override
 	public void onResume() {
 		super.onResume();
+		// start the terminal manager service
+		HostListActivity.this.updateList();
 	}
 
 	@Override
@@ -558,7 +569,16 @@ public class HostListActivity extends ListActivity {
 
 		return true;
 	}
-
+	private void setOverflowShowingAlways() {
+		try {
+			ViewConfiguration config = ViewConfiguration.get(this);
+			Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+			menuKeyField.setAccessible(true);
+			menuKeyField.setBoolean(config, false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
@@ -620,29 +640,21 @@ public class HostListActivity extends ListActivity {
 		return true;
 
 	}
+	@Override
+	public boolean onMenuOpened(int featureId, Menu menu) {
+		if (featureId == Window.FEATURE_ACTION_BAR && menu != null) {
+			if (menu.getClass().getSimpleName().equals("MenuBuilder")) {
+				try {
+					Method m = menu.getClass().getDeclaredMethod("setOptionalIconsVisible", Boolean.TYPE);
+					m.setAccessible(true);
+					m.invoke(menu, true);
+				} catch (Exception e) {
+				}
+			}
+		}
+		return super.onMenuOpened(featureId, menu);
+	}
 
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu)
-    {
-        //if(featureId ==Window.FEATURE_ACTION_BAR && menu !=null){
-        if(featureId == Window.FEATURE_OPTIONS_PANEL && menu != null){
-            if(menu.getClass().getSimpleName().equals("MenuBuilder")){
-                try{
-                    Method m = menu.getClass().getDeclaredMethod(
-                            "setOptionalIconsVisible", Boolean.TYPE);
-                    m.setAccessible(true);
-                    m.invoke(menu, true);
-                }
-                catch(NoSuchMethodException e){
-                    //Log.e(TAG, "onMenuOpened", e);
-                }
-                catch(Exception e){
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-        return super.onMenuOpened(featureId, menu);
-    }
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 

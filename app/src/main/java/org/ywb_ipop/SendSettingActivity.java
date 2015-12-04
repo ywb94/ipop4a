@@ -130,18 +130,19 @@ public class SendSettingActivity extends PreferenceActivity implements SharedPre
             send_enter.setSummary(send_enter.getEntry());
             send_loop.setSummary(send_loop.getEntry());
 
-              getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+
     }catch(Exception e){
             send_period.setSummary("1000");
             send_autosavedir.setSummary(Environment.getExternalStorageDirectory().toString());
             send_autosavedir.setText(Environment.getExternalStorageDirectory().toString());
-            send_height.setSummary("200");
-            send_fontsize.setSummary("20");
+            send_height.setSummary("300");
+            send_fontsize.setSummary("25");
 
             send_type.setSummary(send_type.getEntry());
             send_enter.setSummary(send_enter.getEntry());
             send_loop.setSummary(send_loop.getEntry());
     }
+        getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override

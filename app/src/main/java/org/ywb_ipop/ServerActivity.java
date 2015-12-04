@@ -3,6 +3,7 @@ package org.ywb_ipop;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -107,6 +108,17 @@ public class ServerActivity  extends Activity{
         Button udp_cli_Send=(Button)findViewById(R.id.udp_cli_Send);
         udp_cli_Send.setOnClickListener(new udp_cli_send_onClickListener());
         client=new Socket[MAXCONNECT];
+        ActionBarWrapper actionBar = ActionBarWrapper.getActionBar(this);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     class ReadThread implements  Runnable {

@@ -1,8 +1,10 @@
 package org.ywb_ipop;
 
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.DhcpInfo;
 import android.net.NetworkInfo;
@@ -10,6 +12,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.EditText;
 
 import java.net.InetAddress;
@@ -32,7 +35,17 @@ public class IPinfoActivity extends Activity {
         EditText et2 = (EditText)findViewById(R.id.editText2);
         et.setText(getCurrentNetType(this));
         et2.setText(getLocalIpAddress());
-
+        ActionBarWrapper actionBar = ActionBarWrapper.getActionBar(this);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
     /**
      * 得到当前的手机网络类型

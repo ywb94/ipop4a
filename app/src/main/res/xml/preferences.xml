@@ -88,7 +88,12 @@
 			android:summary="@string/pref_fullscreen_summary"
 			android:defaultValue="false"
 			/>
-
+		<CheckBoxPreference
+			android:key="ywb_pgscreen"
+			android:title="@string/ywb_pref_pgscreen"
+			android:summary="@string/ywb_pref_pgscreen_summary"
+			android:defaultValue="false"
+			/>
 		<CheckBoxPreference
 			android:key="volumefont"
 			android:title="@string/pref_volumefont_title"

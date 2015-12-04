@@ -43,6 +43,7 @@
 		android:allowBackup="true"
 		android:backupAgent="org.ywb_ipop.service.BackupAgent"
 		android:killAfterRestore="true"
+
         >
 
 		<activity android:name="org.ywb_ipop.HostListActivity" android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
@@ -65,7 +66,7 @@
 		</activity>
 		<activity android:name="org.ywb_ipop.ServerActivity" android:configChanges="keyboardHidden|orientation" />
 		<activity android:name="org.ywb_ipop.DiscoveryActivity" android:configChanges="keyboardHidden|orientation" />
-        <activity android:name="org.ywb_ipop.IPinfoActivity" android:configChanges="keyboardHidden|orientation" />
+        <activity android:name="org.ywb_ipop.IPinfoActivity" android:configChanges="keyboardHidden|orientation"  />
         <activity android:name="org.ywb_ipop.SendSettingActivity" android:configChanges="keyboardHidden|orientation" />
 		<activity android:name="org.ywb_ipop.PubkeyListActivity" android:configChanges="keyboardHidden|orientation" />
 		<activity android:name="org.ywb_ipop.GeneratePubkeyActivity" android:configChanges="keyboardHidden|orientation" />
@@ -82,7 +83,7 @@
 			android:description="@string/service_desc" />
 
 		<activity android:name="org.ywb_ipop.ConsoleActivity" android:configChanges="keyboardHidden|orientation"
-			android:theme="@style/NoTitle" android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
+			android:theme="@style/MyTitle" android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
 			android:launchMode="singleTop" android:hardwareAccelerated="false">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
