@@ -190,7 +190,7 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 	MyButton editButton=null;
 	int iButtoncount=0;
 	MyButton aSendButton[];
-	final int MAXBUTTON=20;
+	final int MAXBUTTON=50;
 
 
 

@@ -148,18 +148,21 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             android:id="@+id/scrollView"
-            android:layout_above="@+id/returnButton">
+            android:layout_above="@+id/returnButton"
+            android:background="@drawable/setbar_bg">
 
 
 
         <TableLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 
 			android:background="@drawable/setbar_bg"
 			android:shrinkColumns = "0,1,2,3,4,5,6,7,8"
 			android:id="@+id/tbLayout"
-            android:padding="2dp">
+            android:padding="2dp"
+
+          >
 
             <TableRow
                 android:layout_width="match_parent"

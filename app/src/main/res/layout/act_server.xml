@@ -39,9 +39,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ywb_cli_ip"
                             android:id="@+id/udp_cli_ip_label"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginTop="10dp"
-                            />
+                            android:layout_alignParentLeft="true" />
 
                         <EditText
                             android:layout_width="wrap_content"
@@ -50,7 +48,8 @@
                             android:layout_toRightOf="@+id/udp_cli_ip_label"
                             android:text="127.0.0.1"
                             android:ems="6"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:singleLine="true" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -67,7 +66,9 @@
                             android:ems="4"
 
                             android:layout_toRightOf="@+id/udp_cli_port_label"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:inputType="numberDecimal" />
 
 
                     </LinearLayout>
@@ -107,7 +108,9 @@
                         android:background="@drawable/setbar_bg"
                         android:layout_alignParentLeft="true"
                         android:gravity="top"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:editable="false" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -132,9 +135,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ywb_cli_ip"
                         android:id="@+id/tcp_cli_ip_label"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginTop="10dp"
-                         />
+                        android:layout_alignParentLeft="true" />
 
                     <EditText
                         android:layout_width="wrap_content"
@@ -143,7 +144,8 @@
                         android:layout_toRightOf="@+id/tcp_cli_ip_label"
                         android:text="127.0.0.1"
                         android:ems="6"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:singleLine="true" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -172,7 +174,9 @@
                         android:text="1122"
                         android:ems="4"
                         android:layout_toRightOf="@+id/tcp_cli_port_label"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:inputType="numberDecimal" />
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -221,7 +225,9 @@
                         android:background="@drawable/setbar_bg"
                         android:layout_below="@+id/tcp_cli_Send"
                         android:layout_alignParentLeft="true"
-                        android:gravity="top"/>
+                        android:gravity="top"
+                        android:padding="5dp"
+                        android:editable="false" />
                 </LinearLayout>
 
                 <RelativeLayout
@@ -246,7 +252,8 @@
                         android:layout_toRightOf="@+id/udp_ser_port_label"
                         android:text="2233"
                         android:layout_toLeftOf="@+id/udp_ser_echo"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="10dp"
+                        android:singleLine="true" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -280,7 +287,9 @@
                         android:gravity="top"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/udp_ser_start" />
+                        android:layout_below="@+id/udp_ser_start"
+                        android:padding="5dp"
+                        android:editable="false" />
 
                 </RelativeLayout>
 
@@ -306,7 +315,8 @@
                         android:layout_toRightOf="@+id/tcp_ser_port_label"
                         android:text="1122"
                         android:layout_toLeftOf="@+id/tcp_ser_start"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="10dp"
+                        android:singleLine="true" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -330,7 +340,9 @@
                         android:background="@drawable/setbar_bg"
                         android:layout_below="@+id/tcp_ser_Send"
 
-                        android:gravity="top" />
+                        android:gravity="top"
+                        android:padding="5dp"
+                        android:editable="false" />
 
                     <EditText
                         android:layout_width="fill_parent"

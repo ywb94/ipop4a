@@ -55,7 +55,7 @@
   <string name="ywb_tcp_stop">停止</string>
   <string name="ywb_tcp_dis">清除</string>
   <string name="ywb_tcp_list">连接列表：</string>
-  <string name="ywb_cli_ip">服务器IP：</string>
+  <string name="ywb_cli_ip">服务器地址：</string>
   <string name="ywb_cli_port">服务器端口：</string>
   <string name="ywb_cli_connect">连接</string>
   <string name="ywb_cli_disconnect">断开</string>

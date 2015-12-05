@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/setbar_bg"
-        android:id="@+id/editText" />
+        android:id="@+id/editText"
+        android:padding="5dp" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/setbar_bg"
         android:id="@+id/editText2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp" />
 
 </LinearLayout>
