@@ -63,6 +63,8 @@
   <string name="ywb_udp_echo">回送</string>
   <string name="ywb_pref_pgscreen">"Page up/down 手势"</string>
   <string name="ywb_pref_pgscreen_summary">"上下滑动左半屏幕发送Page Up/Down给终端"</string>
+  <string name="ywb_ping_hint">"请输入主机名或IP"</string>
+  <string name="ywb_ping">"Ping 工具:"</string>
   <string name="service_desc">维护SSH连接及已装载的公钥</string>
   <string name="title_hosts_list">终端</string>
   <string name="title_ipinfo">IP信息</string>

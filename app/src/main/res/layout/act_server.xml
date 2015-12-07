@@ -110,7 +110,8 @@
                         android:gravity="top"
                         android:layout_weight="1"
                         android:padding="5dp"
-                        android:editable="false" />
+                        android:editable="false"
+                        android:textIsSelectable="true" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -227,7 +228,8 @@
                         android:layout_alignParentLeft="true"
                         android:gravity="top"
                         android:padding="5dp"
-                        android:editable="false" />
+                        android:editable="false"
+                        android:textIsSelectable="true" />
                 </LinearLayout>
 
                 <RelativeLayout
@@ -289,7 +291,8 @@
                         android:layout_alignParentLeft="true"
                         android:layout_below="@+id/udp_ser_start"
                         android:padding="5dp"
-                        android:editable="false" />
+                        android:editable="false"
+                        android:textIsSelectable="true" />
 
                 </RelativeLayout>
 
@@ -342,7 +345,8 @@
 
                         android:gravity="top"
                         android:padding="5dp"
-                        android:editable="false" />
+                        android:editable="false"
+                        android:textIsSelectable="true" />
 
                     <EditText
                         android:layout_width="fill_parent"

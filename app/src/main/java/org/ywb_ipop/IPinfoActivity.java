@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.DhcpInfo;
 import android.net.NetworkInfo;
@@ -13,8 +14,14 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -25,18 +32,129 @@ import java.util.Enumeration;
  */
 public class IPinfoActivity extends Activity {
     public static int mtype = 0;
+    private final String TAG="ipop_ip:";
+    private EditText PingHost, PingInfo;
+    private Button Ping;
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.act_ipinfo);
         this.setTitle(String.format("%s: %s",
                 getResources().getText(R.string.app_name),
                 getResources().getText(R.string.title_ipinfo)));
+
+
         EditText et = (EditText)findViewById(R.id.editText);
         EditText et2 = (EditText)findViewById(R.id.editText2);
         et.setText(getCurrentNetType(this));
         et2.setText(getLocalIpAddress());
+        PingInfo=(EditText)findViewById(R.id.PingInfo);
+        PingHost=(EditText)findViewById(R.id.PingHost);
+        Ping=(Button)findViewById(R.id.Ping);
+        //读取保存的配置
+        //sendtxt表示存放时所用的xml文件名称
+        SharedPreferences mSharedPreferences=getSharedPreferences("sendtxt", MODE_PRIVATE);
+        PingHost.setText(mSharedPreferences.getString("PingHost", ""));
+
+        Ping.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //String ip =PingHost.getText().toString();
+
+                Ping.setVisibility(View.INVISIBLE);
+                new Thread(new Ping_Thread()).start();
+               /* try {
+                    Process p = Runtime.getRuntime().exec("/system/bin/ping -c 3 -w 100 " + ip);//ping3次
+                    InputStream input = p.getInputStream();
+                    BufferedReader in = new BufferedReader(new InputStreamReader(input));
+                    StringBuffer stringBuffer = new StringBuffer();
+
+                    String content = "";
+
+                    while ((content = in.readLine()) != null) {
+
+                        stringBuffer.append(content+"\r\n");
+                        PingInfo.setText(stringBuffer.toString());
+
+                    }
+                    PingInfo.setText(stringBuffer.toString());
+                    // PING的状态
+
+                    int status = p.waitFor();
+
+                    if (status != 0) {
+
+                        stringBuffer.append("ping fail!\r\n");
+                        PingInfo.setText(stringBuffer.toString());
+
+                    }
+                }catch (Exception e)
+                {
+                    Log.d(TAG, e.getMessage());
+                }*/
+
+
+            }
+        });
         ActionBarWrapper actionBar = ActionBarWrapper.getActionBar(this);
         actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+    class Ping_Thread implements  Runnable {
+
+        public void run() {
+            try {
+                String ip =PingHost.getText().toString();
+                Process p = Runtime.getRuntime().exec("/system/bin/ping -c 3 -w 100 " + ip);//ping3次
+                InputStream input = p.getInputStream();
+                BufferedReader in = new BufferedReader(new InputStreamReader(input));
+                final StringBuffer stringBuffer = new StringBuffer();
+
+                String content = "";
+
+                while ((content = in.readLine()) != null) {
+
+                    stringBuffer.append(content+"\r\n");
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                    PingInfo.setText(stringBuffer.toString());
+                        }
+                    });
+
+                }
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        PingInfo.setText(stringBuffer.toString());
+                    }
+                    });
+                // PING的状态
+
+                int status = p.waitFor();
+
+                if (status != 0) {
+
+                    stringBuffer.append("ping fail!\r\n");
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                    PingInfo.setText(stringBuffer.toString());
+                        }
+                    });
+                }
+            }catch (Exception e)
+            {
+                Log.d(TAG, e.getMessage());
+            }
+            runOnUiThread(new Runnable() {
+                public void run() {
+            Ping.setVisibility(View.VISIBLE);
+                }
+            });
+        }
+    }
+    //退出当前Activity时被调用,调用之后Activity就结束了
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //保存配置
+        SharedPreferences mSharedPreferences = getSharedPreferences("sendtxt", MODE_PRIVATE);
+        mSharedPreferences.edit().putString("PingHost", PingHost.getText().toString()).commit();
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
