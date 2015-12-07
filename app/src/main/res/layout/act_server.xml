@@ -92,7 +92,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Hex"
-                            android:id="@+id/ud_cli_Hex"
+                            android:id="@+id/udp_cli_Hex"
                             android:layout_marginTop="15dp" />
                         <Button
                             android:layout_width="wrap_content"
@@ -338,7 +338,7 @@
                         android:layout_height="fill_parent"
                         android:id="@+id/tcp_ser_info"
                         android:background="@drawable/setbar_bg"
-                        android:layout_below="@+id/tcp_ser_Send"
+                        android:layout_below="@+id/tcp_ser_Send_txt"
 
                         android:gravity="top"
                         android:padding="5dp"

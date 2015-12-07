@@ -335,7 +335,7 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 		}
 		try
 		{
-			temps = new String(baKeyword, "utf-8");//UTF-16le:Not
+			temps = new String(baKeyword, "ISO-8859-1");//UTF-16le:Not
 		}
 		catch (Exception e1)
 		{
@@ -393,10 +393,13 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 							temps = temps + "\r\n";
 						else
 							temps = temps + "\n";
+						bridge.injectString(temps,0);
 					}
-					else
-						temps=HexStrToTxt(temps);
-					bridge.injectString(temps);
+					else {
+						temps = HexStrToTxt(temps);
+						bridge.injectString(temps,1);
+					}
+
 					bridge.resetScrollPosition();
 				}
 		    }
@@ -901,11 +904,18 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 							}
 
 						}
-						if(bCrlf==1)
-							temps=temps+"\r\n";
-						else
-							temps=temps+"\n";
-						bridge.injectString(temps);
+
+						if (iSendtype == 0) {
+							if (bCrlf == 1)
+								temps = temps + "\r\n";
+							else
+								temps = temps + "\n";
+							bridge.injectString(temps,0);
+						}
+						else {
+							temps = HexStrToTxt(temps);
+							bridge.injectString(temps,1);
+						}
 						bridge.resetScrollPosition();
 						return;
 					}
@@ -1628,7 +1638,7 @@ public class ConsoleActivity extends Activity implements MyDialogListener {
 
 				// pull string from clipboard and generate all events to force down
 				String clip = clipboard.getText().toString();
-				bridge.injectString(clip);
+				bridge.injectString(clip,0);
 
 				return true;
 			}

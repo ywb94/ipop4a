@@ -239,7 +239,7 @@ public class TerminalBridge implements VDUDisplay {
         }
         try
         {
-            temps = new String(baKeyword, "utf-8");//UTF-16le:Not
+            temps = new String(baKeyword, "ISO-8859-1");//UTF-16le:Not
         }
         catch (Exception e1)
         {
@@ -322,15 +322,17 @@ public class TerminalBridge implements VDUDisplay {
                             }
                             // pull string  to force down
                             String temps;
-                            if(bCrlf==1)
-                                temps="\r\n";
-                            else
-                                temps="\n";
-                            if(iSendtype==0)
-                            injectString(sendStr[sendLoc] + temps);
+
+                            if(iSendtype==0) {
+								if(bCrlf==1)
+									temps="\r\n";
+								else
+									temps="\n";
+								injectString(sendStr[sendLoc] + temps, 0);
+							}
                             else if(iSendtype==1)
                             {
-                              injectString(HexStrToTxt(sendStr[sendLoc]) + temps);
+                              injectString(HexStrToTxt(sendStr[sendLoc]),1);
                             }
                             sendLoc++;
 
@@ -519,14 +521,17 @@ public class TerminalBridge implements VDUDisplay {
 	 * Inject a specific string into this terminal. Used for post-login strings
 	 * and pasting clipboard.
 	 */
-	public void injectString(final String string) {
+	public void injectString(final String string,final int encode) {
 		if (string == null || string.length() == 0)
 			return;
 
 		Thread injectStringThread = new Thread(new Runnable() {
 			public void run() {
 				try {
+					if(encode==0)
 					transport.write(string.getBytes(host.getEncoding()));
+					else
+						transport.write(string.getBytes("ISO-8859-1"));
 				} catch (Exception e) {
 					Log.e(TAG, "Couldn't inject string to remote host: ", e);
 				}
@@ -584,7 +589,7 @@ public class TerminalBridge implements VDUDisplay {
 		setFontSize(fontSizeDp);
 
 		// finally send any post-login string, if requested
-		injectString(host.getPostLogin());
+		injectString(host.getPostLogin(),0);
 	}
 
 	/**
