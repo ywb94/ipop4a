@@ -291,7 +291,7 @@ public class ServerActivity  extends Activity{
             try{
                 for(int i=0;i<MAXCONNECT;i++)
                     if(client[i]!=null)
-                        if(client[i].isConnected())
+                        if(client[i].isConnected()&&!client[i].isClosed())
                             client[i].close();
                 if(serverSocket!=null)
                 serverSocket.close();
@@ -443,7 +443,7 @@ public class ServerActivity  extends Activity{
                 try{
                     for(int i=0;i<MAXCONNECT;i++)
                         if(client[i]!=null)
-                        if(client[i].isConnected())
+                        if(client[i].isConnected()&&!client[i].isClosed())
                             client[i].close();
                     serverSocket.close();
                 }catch (Exception e){
@@ -468,7 +468,7 @@ public class ServerActivity  extends Activity{
                 for(int i=0;i<MAXCONNECT;i++)
                 {
                     if(client[i]!=null){
-                        if(client[i].isConnected()){
+                        if (client[i].isConnected()&&!client[i].isClosed()){
                             client[i].getOutputStream().write(tempb);
                         }
 

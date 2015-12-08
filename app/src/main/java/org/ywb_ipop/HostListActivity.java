@@ -635,6 +635,8 @@ public class HostListActivity extends ListActivity {
 
 		MenuItem help = menu.add(R.string.title_help);
 		help.setIcon(android.R.drawable.ic_menu_help);
+		if (android.os.Build.VERSION.SDK_INT >=  14)//Android 4.0以上才支持
+			help.setShowAsAction(1);//SHOW_AS_ACTION_IF_ROOM,SHOW_AS_ACTION_ALWAYS:2
 		help.setIntent(new Intent(HostListActivity.this, HelpActivity.class));
 
 		return true;
